@@ -24,7 +24,6 @@ export function ProjectsMilestone({ progress, isActive }: MilestoneProps) {
 
   const project1 = projectsData[0];
   const project2 = projectsData[1];
-  const project3 = projectsData[2];
 
   return (
     <div
@@ -54,7 +53,8 @@ export function ProjectsMilestone({ progress, isActive }: MilestoneProps) {
                     href={project1.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-slate-700 hover:text-cyan-600 p-1"
+                    className="text-slate-700 hover:text-cyan-600 p-1 transition-colors"
+                    title="View GitHub Repository"
                   >
                     <GithubIcon className="w-4 h-4" />
                   </a>
@@ -78,6 +78,17 @@ export function ProjectsMilestone({ progress, isActive }: MilestoneProps) {
                 <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-100 text-cyan-800 font-semibold border border-cyan-200">
                   {project2.category}
                 </span>
+                {project2.githubUrl && (
+                  <a
+                    href={project2.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-slate-700 hover:text-cyan-600 p-1 transition-colors"
+                    title="View GitHub Repository"
+                  >
+                    <GithubIcon className="w-4 h-4" />
+                  </a>
+                )}
               </div>
               <h3 className="text-sm font-bold text-slate-900">{project2.title}</h3>
               <p className="text-slate-600 text-xs font-normal leading-relaxed">{project2.description}</p>
@@ -95,31 +106,21 @@ export function ProjectsMilestone({ progress, isActive }: MilestoneProps) {
 
       {/* RIGHT SIDE CONTAINER */}
       <div className="pointer-events-auto max-w-xs sm:max-w-sm w-full bg-white/95 backdrop-blur-xl border border-slate-200/90 shadow-xl shadow-slate-900/5 p-6 rounded-3xl space-y-4 text-left hidden md:block">
-        {project3 && (
-          <div className="bg-slate-50/90 p-4 rounded-2xl border border-slate-200/80 space-y-2 hover:border-cyan-400 transition-colors shadow-sm">
-            <div className="flex items-center justify-between">
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-100 text-cyan-800 font-semibold border border-cyan-200">
-                {project3.category}
-              </span>
-            </div>
-            <h3 className="text-sm font-bold text-slate-900">{project3.title}</h3>
-            <p className="text-slate-600 text-xs font-normal leading-relaxed">{project3.description}</p>
-            <div className="flex flex-wrap gap-1.5 pt-1">
-              {project3.tech.map((t, i) => (
-                <span key={i} className="text-[10px] font-mono px-2 py-0.5 rounded bg-white text-slate-800 border border-slate-200">
-                  {t}
-                </span>
-              ))}
-            </div>
-          </div>
-        )}
-
-        <div className="pt-2 border-t border-slate-200/80 space-y-2">
+        <div className="space-y-2">
           <h4 className="text-[0.75rem] font-sans font-semibold tracking-[0.1em] uppercase text-cyan-800">
+            Open Source & Architecture
+          </h4>
+          <p className="text-xs text-slate-600 font-normal leading-relaxed">
+            Focused on building autonomous AI workflows, transactional safety, clean MVC architecture, and high-performance database systems.
+          </p>
+        </div>
+
+        <div className="pt-3 border-t border-slate-200/80 space-y-2">
+          <h4 className="text-[0.75rem] font-sans font-semibold tracking-[0.1em] uppercase text-slate-800">
             Explore All Repositories
           </h4>
           <p className="text-xs text-slate-600 font-normal leading-relaxed">
-            Check out open-source projects, Java algorithms, and utility scripts on my GitHub profile.
+            Check out full codebases, AI policy engines, and Java backend projects on my GitHub.
           </p>
           <a
             href="https://github.com/sirshivansh"
@@ -127,7 +128,7 @@ export function ProjectsMilestone({ progress, isActive }: MilestoneProps) {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 text-xs font-mono text-cyan-700 hover:text-slate-950 font-bold transition-colors pt-1"
           >
-            Visit GitHub Profile <ArrowUpRight className="w-3.5 h-3.5" />
+            Visit @sirshivansh GitHub <ArrowUpRight className="w-3.5 h-3.5" />
           </a>
         </div>
       </div>

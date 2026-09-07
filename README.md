@@ -32,6 +32,7 @@ An interactive, Apple-style scroll-driven **HD frame-sequence animation portfoli
 - **💎 Clean & Crisp Visual Quality (~20.5 MB Payload)**: Frame sequence compressed at `quality=68` averaging ~138 KB per frame (~20.55 MB total set), delivering crisp facial details, sharp suit textures, and zero compression blurriness.
 - **⚡ Smooth 60 FPS Scroll Scrubbing**: Physics-driven linear interpolation (`lerpFactor = 0.12`) via `requestAnimationFrame` maps vertical scroll progress smoothly across all 152 animation frames.
 - **↔️ Unobstructed Center Viewport & Side-Aligned Storytelling**: Content cards are positioned on the far left and right flanks of the screen, leaving the central viewport wide open for the animated photo subject.
+- **🚀 Real Project Showcase**: Showcasing **PayRecover AI** (AI revenue recovery platform) and **Smart Library System** (Java MVC management platform).
 - **🪟 Light Immersive Glass UI System**: Translucent light glass panels (`bg-white/90 backdrop-blur-2xl border border-slate-200/90 shadow-2xl`) blend seamlessly into the white canvas background.
 - **🔤 Playfair Display Serif Headlines**: Elegant Google Font typography (`Playfair_Display` 700 weight, `-0.02em` letter-spacing) paired with uppercase letter-spaced sans-serif badges (`0.75rem`, `0.1em` tracking).
 - **⚙️ Data-Driven Architecture**: All portfolio text, projects, skills, education, and social links are managed from a single central file ([`lib/data.ts`](lib/data.ts)).
@@ -57,7 +58,7 @@ c:/Projects/Portfolio/
 │   ├── milestones/
 │   │   ├── HeroMilestone.tsx    # Welcome banner with intro copy & primary action CTAs
 │   │   ├── AboutMilestone.tsx   # Engineering backstory & core philosophy highlights
-│   │   ├── ProjectsMilestone.tsx# Selected project case studies with category badges
+│   │   ├── ProjectsMilestone.tsx# PayRecover AI & Smart Library System project cards
 │   │   ├── SkillsMilestone.tsx  # Categorized technical skills grid (Languages, Frameworks, DBs, Tools)
 │   │   └── ContactMilestone.tsx # Direct email CTA card, social links & copyright footer
 │   ├── sections/                # Modular fallback section components used in standard mode
@@ -101,7 +102,7 @@ The 500vh scrollable track maps scroll progress `[0.0 .. 1.0]` across 152 animat
 | :--- | :--- | :--- | :--- |
 | **Welcome (Hero)** | Frames `0 – 25` | Playfair Headline, Title, Bio, Action Buttons | Location Badge (`India`), Core Focus Pill |
 | **About Me** | Frames `26 – 55` | Backstory & Engineering Card | Core Philosophy Highlights Card |
-| **Featured Projects** | Frames `56 – 85` | Projects 1 & 2 Cards (`Campus Connect`, `Smart Attendance`) | Project 3 Card (`Java Utility Suite`), GitHub Link |
+| **Featured Projects** | Frames `56 – 85` | `PayRecover AI` & `Smart Library System` Cards | GitHub Repositories & Open Source Card |
 | **Skills & Toolkit** | Frames `86 – 105` | Languages & Frameworks Cards | Databases & Tools Cards |
 | **Contact** | Frames `106 – 151` | Email CTA Card (`shivanshmishra@example.com`) | Social Links (GitHub, LinkedIn), Footer Note |
 
@@ -123,22 +124,32 @@ export const siteConfig = {
 
 export const socialLinks = {
   github: 'https://github.com/sirshivansh',
-  linkedin: 'https://linkedin.com/in/your-username',
-  email: 'your.email@example.com',
+  linkedin: 'https://linkedin.com/in/',
+  email: 'shivanshmishra@example.com',
 };
 ```
 
-### 2. Add or Edit Projects
+### 2. Featured Projects (`lib/data.ts`)
 
 ```typescript
 export const projects = [
   {
-    title: 'Project Title',
-    type: 'Full-stack platform',
-    description: 'Overview of what was built and key engineering achievements.',
-    stack: ['Java', 'Spring Boot', 'MySQL'],
-    github: 'https://github.com/username/repo',
-    demo: 'https://demo-url.com',
+    title: 'PayRecover AI',
+    type: 'AI Revenue Recovery',
+    description:
+      'An AI-assisted autonomous revenue recovery system for failed payment transactions, combining NVIDIA Nemotron LLM intelligence with a deterministic policy engine and Fastify backend.',
+    stack: ['TypeScript', 'Fastify', 'React', 'PostgreSQL', 'Redis', 'NVIDIA AI'],
+    github: 'https://github.com/sirshivansh/payrecover-ai',
+    demo: 'https://github.com/sirshivansh/payrecover-ai',
+  },
+  {
+    title: 'Smart Library System',
+    type: 'Java Backend System',
+    description:
+      'A Java management platform engineered with strict MVC architecture, DAO patterns, MySQL database integration, SHA-256 password security, and dynamic fine computation.',
+    stack: ['Java', 'MySQL', 'JDBC', 'MVC Architecture'],
+    github: 'https://github.com/sirshivansh/smart_library_system',
+    demo: 'https://github.com/sirshivansh/smart_library_system',
   },
 ];
 ```
@@ -147,10 +158,10 @@ export const projects = [
 
 ```typescript
 export const skills = {
-  'Languages': ['Java', 'Python', 'SQL', 'JavaScript', 'HTML', 'CSS'],
-  'Frameworks & Libraries': ['Spring Boot', 'REST APIs', 'JDBC'],
-  'Databases': ['MySQL', 'PostgreSQL'],
-  'Tools & Platforms': ['Git', 'GitHub', 'VS Code', 'IntelliJ IDEA', 'Linux'],
+  'Languages': ['Java', 'Python', 'SQL', 'TypeScript', 'JavaScript', 'HTML', 'CSS'],
+  'Frameworks & Libraries': ['Fastify', 'React', 'REST APIs', 'JDBC', 'OpenCV'],
+  'Databases': ['MySQL', 'PostgreSQL', 'Redis'],
+  'Tools & Platforms': ['Git', 'GitHub', 'VS Code', 'IntelliJ IDEA', 'Linux', 'Vite', 'Turborepo'],
 };
 ```
 

@@ -15,12 +15,12 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://shivansh-mishra.vercel.app'),
   title: 'Shivansh Mishra — Java Developer & Computer Engineering Student',
   description:
-    'Portfolio of Shivansh Mishra, a Java developer and computer engineering student specializing in backend development, Spring Boot, and building dependable software.',
+    'Portfolio of Shivansh Mishra, a Java developer and computer engineering student specializing in backend development, MySQL, and building dependable software.',
   keywords: [
     'Shivansh Mishra',
     'Java Developer',
     'Computer Engineering',
-    'Spring Boot',
+    'MySQL',
     'Portfolio',
     'Backend Developer',
     'Software Developer',
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     title: 'Shivansh Mishra — Java Developer & Computer Engineering Student',
     description:
-      'Portfolio of Shivansh Mishra — building dependable, thoughtful software with Java, Spring Boot, and modern backend technologies.',
+      'Portfolio of Shivansh Mishra — building dependable, thoughtful software with Java, MySQL, and modern backend technologies.',
     siteName: 'Shivansh Mishra Portfolio',
     images: [
       {

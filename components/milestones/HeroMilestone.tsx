@@ -75,7 +75,7 @@ export function HeroMilestone({ progress, isActive }: MilestoneProps) {
             <Code2 className="w-4 h-4" /> Core Focus
           </div>
           <p className="text-xs text-slate-600 font-normal leading-relaxed">
-            Java, Spring Boot, Object-Oriented Architecture, Systems Thinking & High-Performance Web Services.
+            Java, MySQL, Object-Oriented Architecture, Systems Thinking & High-Performance Backend Systems.
           </p>
         </div>
       </div>
