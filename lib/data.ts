@@ -14,7 +14,7 @@ export const siteConfig = {
 export const socialLinks = {
   github: 'https://github.com/sirshivansh',
   linkedin: 'https://linkedin.com/in/',
-  email: 'shivanshmishra@example.com',
+  email: 'shivanshmishraworks@gmail.com',
 };
 
 // Resume: place your resume PDF at /public/resume.pdf
