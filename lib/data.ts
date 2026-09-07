@@ -9,17 +9,17 @@ export const siteConfig = {
     'Portfolio of Shivansh Mishra, a Java developer and computer engineering student building dependable, thoughtful software.',
   url: 'https://shivansh-mishra.vercel.app', // TODO: replace with your real deployed URL
   ogImage: '/shivansh-photo.jpg',
-}
+};
 
 export const socialLinks = {
   github: 'https://github.com/sirshivansh', // TODO: verify this is your real GitHub profile
   linkedin: 'https://linkedin.com/in/', // TODO: add your LinkedIn username
   email: 'shivanshmishra@example.com', // TODO: replace with your real email
-}
+};
 
 // Resume: place your resume PDF at /public/resume.pdf
 // If the file doesn't exist, the download button will link to the external URL below.
-export const resumeUrl = '/resume.pdf' // TODO: add resume.pdf to /public, or replace with external URL
+export const resumeUrl = '/resume.pdf'; // TODO: add resume.pdf to /public, or replace with external URL
 
 export const navLinks = [
   { label: 'Work', href: '#work' },
@@ -27,7 +27,7 @@ export const navLinks = [
   { label: 'About', href: '#about' },
   { label: 'Education', href: '#education' },
   { label: 'Contact', href: '#contact' },
-]
+];
 
 export const heroData = {
   badge: 'Available for opportunities',
@@ -37,25 +37,34 @@ export const heroData = {
     "I'm Shivansh — a developer who turns complex problems into dependable, thoughtful software. I care about strong fundamentals, useful products, and code that lasts.",
   location: 'Based in India',
   status: 'Open to build',
-}
+};
 
 export const aboutData = {
   paragraphs: [
     "I'm currently pursuing a Bachelor's degree in Computer Engineering, building my foundation across software development, problem solving, and systems thinking.",
     "My home base is Java. I enjoy the discipline of object-oriented design, the clarity of well-structured APIs, and the moment an abstract idea finally becomes something useful.",
   ],
-}
+};
 
 export const skills = {
-  'Languages': ['Java', 'Python', 'SQL', 'JavaScript', 'HTML', 'CSS'],
+  Languages: ['Java', 'Python', 'SQL', 'JavaScript', 'HTML', 'CSS'],
   'Frameworks & Libraries': ['Spring Boot', 'REST APIs', 'JDBC'],
-  'Databases': ['MySQL', 'PostgreSQL'],
+  Databases: ['MySQL', 'PostgreSQL'],
   'Tools & Platforms': ['Git', 'GitHub', 'VS Code', 'IntelliJ IDEA', 'Linux'],
   'Core Concepts': ['OOP', 'Data Structures', 'Algorithms', 'DBMS', 'OS'],
-}
+};
 
 // Flat list used in the About section skill cloud
-export const coreSkills = ['Java', 'Spring Boot', 'SQL', 'REST APIs', 'Python', 'Git', 'OOP', 'Data Structures']
+export const coreSkills = [
+  'Java',
+  'Spring Boot',
+  'SQL',
+  'REST APIs',
+  'Python',
+  'Git',
+  'OOP',
+  'Data Structures',
+];
 
 export const projects = [
   {
@@ -64,7 +73,6 @@ export const projects = [
     description:
       'A student collaboration platform for communities, events, and shared resources.',
     stack: ['Java', 'Spring Boot', 'MySQL'],
-    // TODO: add real links when available
     github: '',
     demo: '',
   },
@@ -86,7 +94,7 @@ export const projects = [
     github: '',
     demo: '',
   },
-]
+];
 
 export const education = [
   {
@@ -94,9 +102,10 @@ export const education = [
     institution: '', // TODO: add your university name
     location: 'India',
     period: 'In progress',
-    description: 'Focusing on software development, data structures, algorithms, and systems design.',
+    description:
+      'Focusing on software development, data structures, algorithms, and systems design.',
   },
-]
+];
 
 export const experienceStrip = [
   {
@@ -114,4 +123,39 @@ export const experienceStrip = [
     title: 'Learn. Build. Improve.',
     subtitle: 'One meaningful commit at a time',
   },
-]
+];
+
+// Helper export aliases for Frame Scroll Milestones
+export const personalInfo = {
+  name: siteConfig.name,
+  title: heroData.kicker,
+  bio: heroData.intro,
+  email: socialLinks.email,
+  github: socialLinks.github,
+  linkedin: socialLinks.linkedin,
+  location: heroData.location,
+};
+
+export const aboutInfo = {
+  paragraph1: aboutData.paragraphs[0],
+  paragraph2: aboutData.paragraphs[1],
+  highlights: coreSkills,
+};
+
+export const projectsData = projects.map((p, idx) => ({
+  id: `project-${idx}`,
+  title: p.title,
+  category: p.type,
+  description: p.description,
+  tech: p.stack,
+  githubUrl: p.github,
+  liveUrl: p.demo,
+}));
+
+export const skillsData = {
+  languages: skills['Languages'],
+  frameworks: skills['Frameworks & Libraries'],
+  databases: skills['Databases'],
+  tools: skills['Tools & Platforms'],
+  core: skills['Core Concepts'],
+};
