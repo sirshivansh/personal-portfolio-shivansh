@@ -29,15 +29,20 @@ export function FrameScrollCanvas({
 
       const width = window.innerWidth;
       const height = window.innerHeight;
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      // Use native devicePixelRatio for full 1:1 hardware pixel resolution on 4K & Retina displays
+      const dpr = Math.max(window.devicePixelRatio || 1, 1);
 
-      if (canvas.width !== width * dpr || canvas.height !== height * dpr) {
-        canvas.width = width * dpr;
-        canvas.height = height * dpr;
+      if (canvas.width !== Math.round(width * dpr) || canvas.height !== Math.round(height * dpr)) {
+        canvas.width = Math.round(width * dpr);
+        canvas.height = Math.round(height * dpr);
       }
 
       ctx.save();
       ctx.scale(dpr, dpr);
+
+      // Force highest quality image smoothing for 4K rendering
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = 'high';
 
       // Fill canvas background with pure white (#ffffff)
       ctx.fillStyle = '#ffffff';
