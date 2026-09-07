@@ -34,7 +34,7 @@ export const MILESTONES: MilestoneConfig[] = [
     id: 'contact',
     title: 'Contact',
     startFrame: 106,
-    endFrame: 120,
+    endFrame: 152,
   },
 ];
 
