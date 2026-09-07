@@ -1,141 +1,172 @@
-# ⚡ Shivansh Mishra — Personal Portfolio
+# ⚡ Shivansh Mishra — Personal Portfolio v2.0
 
-[![Next.js](https://img.shields.io/badge/Next.js-16.0.3-black?logo=next.js&style=flat-square)](https://nextjs.org/)
-[![React](https://img.shields.io/badge/React-19.0.0-61DAFB?logo=react&style=flat-square)](https://react.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.7.3-3178C6?logo=typescript&style=flat-square)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.0.0-06B6D4?logo=tailwindcss&style=flat-square)](https://tailwindcss.com/)
-[![Three.js](https://img.shields.io/badge/Three.js-0.174-black?logo=three.js&style=flat-square)](https://threejs.org/)
-[![License](https://img.shields.io/badge/License-MIT-blue.style=flat-square)](LICENSE)
+[![Next.js](https://img.shields.io/badge/Next.js-16.3-black?logo=next.js&style=flat-square)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19.0-61DAFB?logo=react&style=flat-square)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.7-3178C6?logo=typescript&style=flat-square)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.3-06B6D4?logo=tailwindcss&style=flat-square)](https://tailwindcss.com/)
+[![Canvas 4K UHD](https://img.shields.io/badge/Canvas-4K_UHD_3840x2160-emerald?style=flat-square)](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
 
-A high-performance, dark-themed personal developer portfolio built with **Next.js 16 (App Router)**, **React 19**, **Three.js**, and **Tailwind CSS v4**. Featuring a custom 3D WebGL background, modular section-based architecture, full data centralization, micro-animations, and comprehensive SEO optimization.
+An interactive, Apple-style scroll-driven **4K UHD frame-sequence animation portfolio** built with **Next.js 16 (App Router)**, **React 19**, **TypeScript**, and **Tailwind CSS v4**. Featuring high-definition 4K image smoothing, side-aligned storytelling cards, Playfair Display typography, single-source-of-truth data centralization, and accessible reduced-motion fallback rendering.
 
 ---
 
 ## 📋 Table of Contents
 
-- [✨ Features](#-features)
-- [🏗️ Project Architecture & Structure](#️-project-architecture--structure)
-- [🛠️ Tech Stack](#️-tech-stack)
+- [✨ Key Features](#-key-features)
+- [🏗️ Project Architecture & File Tree](#️-project-architecture--file-tree)
+- [🎬 Scroll Milestone Mapping](#-scroll-milestone-mapping)
 - [⚙️ Single Source of Truth (`lib/data.ts`)](#️-single-source-of-truth-libdatats)
+- [🛠️ Tech Stack Matrix](#️-tech-stack-matrix)
 - [🚀 Quick Start & Local Setup](#-quick-start--local-setup)
 - [🎨 Design System & Customization](#-design-system--customization)
-- [🌌 3D WebGL Background](#-3d-webgl-background)
-- [⚡ Performance, SEO & Accessibility](#-performance-seo--accessibility)
-- [🌐 Deployment](#-deployment)
+- [⚡ Performance, Accessibility & SEO](#-performance-seo--accessibility)
+- [🌐 Deployment Guide](#-deployment-guide)
 - [📄 License](#-license)
 
 ---
 
-## ✨ Features
+## ✨ Key Features
 
-- **🌌 Dynamic 3D Background**: Interactive WebGL scene powered by Three.js featuring animated wireframe icosahedrons, floating particle fields, and smooth camera rotations.
-- **🧱 Data-Driven Architecture**: All portfolio data (projects, skills, education, hero details, social handles) is managed from a single configuration file (`lib/data.ts`).
-- **🧩 Section Modularization**: Clean separation of concerns with individual components for Hero, Projects, Skills, About, Education, Contact, Navbar, and Footer.
-- **✨ Scroll Animations**: Native `IntersectionObserver` scroll reveal wrapper supporting smooth fade-up transitions and automatic fallback for `prefers-reduced-motion`.
-- **📱 Fully Responsive**: Custom breakpoints tuned for mobile (320px+), tablet (720px+), laptop (1024px+), and ultra-wide desktops.
-- **🔍 Comprehensive SEO**: Built-in Open Graph images, Twitter Cards, semantic HTML5 structure, canonical URLs, and Google Search index readiness.
-- **♿ Accessibility First**: Visible keyboard focus indicators (`:focus-visible`), ARIA landmarks, appropriate color contrast ratios, and semantic navigation tags.
-- **⚡ Next.js 16 App Router**: Optimized image rendering with Next `Image`, dynamic imports, server components by default, and zero unnecessary client-side JS overhead.
+- **🖼️ 4K UHD Canvas Animation Engine**: 120 high-definition frames (`3840x2160`) processed with Lanczos super-resolution and UnsharpMask detail enhancement, rendered on an HTML5 2D `<canvas>` with `imageSmoothingQuality = 'high'`.
+- **⚡ Smooth 60 FPS Scroll Scrubbing**: Physics-driven linear interpolation (`lerpFactor = 0.12`) via `requestAnimationFrame` maps vertical scroll progress smoothly across all 120 animation frames.
+- **↔️ Unobstructed Center Viewport & Side-Aligned Storytelling**: Content cards are positioned on the far left and right flanks of the screen, leaving the central 45% of the viewport wide open for the animated photo subject.
+- **🪟 Light Immersive Glass UI System**: Translucent light glass panels (`bg-white/90 backdrop-blur-2xl border border-slate-200/90 shadow-2xl`) blend seamlessly into the white canvas background.
+- **🔤 Playfair Display Serif Headlines**: Elegant Google Font typography (`Playfair_Display` 700 weight, `-0.02em` letter-spacing) paired with uppercase letter-spaced sans-serif badges (`0.75rem`, `0.1em` tracking).
+- **⚙️ Data-Driven Architecture**: All portfolio text, projects, skills, education, and social links are managed from a single central file ([`lib/data.ts`](lib/data.ts)).
+- **♿ Reduced Motion & Low-End Fallback**: Detects `prefers-reduced-motion: reduce` and renders a clean static single-page portfolio layout automatically.
 
 ---
 
-## 🏗️ Project Architecture & Structure
+## 🏗️ Project Architecture & File Tree
 
 ```
 c:/Projects/Portfolio/
 ├── app/
-│   ├── favicon.ico              # Website icon
-│   ├── globals.css              # Custom design system, variables, and responsive classes
-│   ├── layout.tsx               # Root layout, metadata, SEO configurations, and fonts
-│   └── page.tsx                 # Main page composing all modular sections
+│   ├── favicon.ico              # Favicon icon
+│   ├── globals.css              # Design tokens, typography variables, and utility classes
+│   ├── layout.tsx               # Root layout, Google Fonts (Inter, JetBrains Mono, Playfair Display), SEO metadata
+│   └── page.tsx                 # Main composition root orchestrating canvas, overlays, and navbar
 ├── components/
-│   ├── portfolio-scene.tsx      # Three.js WebGL canvas background
-│   ├── scroll-reveal.tsx        # IntersectionObserver animation wrapper
-│   ├── sections/
-│   │   ├── navbar.tsx           # Sticky navigation header with blurred background
-│   │   ├── hero.tsx             # Hero banner with profile photo, intro & CTAs
-│   │   ├── projects.tsx         # Tabbed/grid project showcase with filter badges
-│   │   ├── skills.tsx           # Categorized skills grid (Frontend, Backend, Tools)
-│   │   ├── about.tsx            # Personal backstory, philosophy & core values
-│   │   ├── education.tsx        # Academic history & achievements
-│   │   ├── contact.tsx          # Direct contact links, email & social media
-│   │   └── footer.tsx           # Brand footer with copyright & quick links
+│   ├── frame-navbar.tsx         # Translucent top navigation header with scroll detection
+│   ├── frame-overlay-content.tsx# Milestone orchestrator synchronizing frame index to section cards
+│   ├── frame-scroll-canvas.tsx  # 4K UHD Canvas rendering engine with cover scaling & high smoothing
+│   ├── loading-screen.tsx       # Preloader UI with percentage counter & progress bar
+│   ├── standard-fallback.tsx    # Static single-page fallback renderer for reduced motion
+│   ├── milestones/
+│   │   ├── HeroMilestone.tsx    # Welcome banner with intro copy & primary action CTAs
+│   │   ├── AboutMilestone.tsx   # Engineering backstory & core philosophy highlights
+│   │   ├── ProjectsMilestone.tsx# Selected project case studies with category badges
+│   │   ├── SkillsMilestone.tsx  # Categorized technical skills grid (Languages, Frameworks, DBs, Tools)
+│   │   └── ContactMilestone.tsx # Direct email CTA card, social links & copyright footer
+│   ├── sections/                # Modular fallback section components used in standard mode
+│   │   ├── navbar.tsx
+│   │   ├── hero.tsx
+│   │   ├── projects.tsx
+│   │   ├── skills.tsx
+│   │   ├── about.tsx
+│   │   ├── education.tsx
+│   │   ├── contact.tsx
+│   │   └── footer.tsx
 │   └── ui/
-│       └── button.tsx           # Reusable button component
+│       ├── button.tsx           # Reusable button component
+│       └── icons.tsx            # Inline SVG icons for GitHub & LinkedIn
+├── hooks/
+│   ├── useFramePreloader.ts     # Concurrent batch image downloading engine with progress tracking
+│   ├── useScrollLerp.ts         # Smooth linear interpolation scroll scrubbing hook
+│   └── useReducedMotion.ts      # Accessibility motion preference detector
 ├── lib/
 │   ├── data.ts                  # Centralized portfolio data (Single Source of Truth)
+│   ├── frame-manifest.ts        # Programmatic 120-frame URL manifest generator
+│   ├── milestones.ts           # Milestone frame range definitions [0..119]
 │   └── utils.ts                 # Class merger utility (`clsx` + `tailwind-merge`)
 ├── public/
-│   ├── shivansh-photo.jpg       # Profile photo
-│   ├── resume.pdf               # Resume document (place your PDF file here)
-│   └── icon.svg                 # SVG favicon logo
-├── next.config.mjs              # Next.js configuration
-├── postcss.config.mjs           # PostCSS configuration
-├── tsconfig.json                # TypeScript compiler configuration
+│   ├── frames/                  # 120 upscaled 4K UHD image frames (ezgif-frame-001.jpg .. 120.jpg)
+│   ├── shivansh-photo.jpg       # Profile photo asset
+│   ├── resume.pdf               # Resume document (place your PDF here)
+│   └── icon.svg                 # SVG brand icon
+├── shivanshphotoframes.zip      # 4K UHD frame archive
 ├── package.json                 # Dependencies and npm scripts
 └── README.md                    # Project documentation
 ```
 
 ---
 
-## 🛠️ Tech Stack
+## 🎬 Scroll Milestone Mapping
 
-| Category | Technology | Purpose |
-| --- | --- | --- |
-| **Framework** | Next.js 16 (App Router) | React framework for server rendering, static export & routing |
-| **Language** | TypeScript 5.7 | Static typing, interface definitions, and IDE autocomplete |
-| **UI Library** | React 19 | Core UI component building blocks |
-| **3D Rendering** | Three.js / @react-three/fiber | Canvas WebGL background animations |
-| **Styling** | Tailwind CSS v4 & Vanilla CSS | Utility-first styling & custom CSS custom properties |
-| **Icons** | Lucide React & Custom Inline SVGs | Scalable vector icons for social media and navigation |
-| **Fonts** | Inter & JetBrains Mono | Clean sans-serif UI typography and developer-style code font |
-| **Analytics** | @vercel/analytics | Privacy-preserving traffic and visitor analytics |
+The 500vh scrollable track maps scroll progress `[0.0 .. 1.0]` across 120 animation frames (`lib/milestones.ts`):
+
+| Milestone | Frame Range | Left Flank Content | Right Flank Content |
+| :--- | :--- | :--- | :--- |
+| **Welcome (Hero)** | Frames `0 – 25` | Playfair Headline, Title, Bio, Action Buttons | Location Badge (`India`), Core Focus Pill |
+| **About Me** | Frames `26 – 55` | Backstory & Engineering Card | Core Philosophy Highlights Card |
+| **Featured Projects** | Frames `56 – 85` | Projects 1 & 2 Cards (`Campus Connect`, `Smart Attendance`) | Project 3 Card (`Java Utility Suite`), GitHub Link |
+| **Skills & Toolkit** | Frames `86 – 105` | Languages & Frameworks Cards | Databases & Tools Cards |
+| **Contact** | Frames `106 – 119` | Email CTA Card (`shivanshmishra@example.com`) | Social Links (GitHub, LinkedIn), Footer Note |
 
 ---
 
 ## ⚙️ Single Source of Truth (`lib/data.ts`)
 
-Updating content on the portfolio requires zero editing of layout HTML or React components. All text, project lists, technical skills, and social handles reside in `lib/data.ts`.
+All text, project lists, technical skills, and social handles are configured in [`lib/data.ts`](lib/data.ts). Updating portfolio content requires zero editing of layout components.
 
-### 1. Update Personal Info & Social Links
+### 1. Personal Details & Social Handles
 
 ```typescript
-export const personalInfo = {
-  name: "Shivansh Mishra",
-  title: "Full Stack Web Developer & Software Engineer",
-  email: "your.email@example.com",
-  github: "https://github.com/sirshivansh",
-  linkedin: "https://linkedin.com/in/your-profile",
-  location: "India",
-}
+export const siteConfig = {
+  name: 'Shivansh Mishra',
+  title: 'Shivansh Mishra — Java Developer & Computer Engineering Student',
+  description: 'Portfolio of Shivansh Mishra, a Java developer specializing in backend engineering.',
+  url: 'https://shivansh-mishra.vercel.app',
+};
+
+export const socialLinks = {
+  github: 'https://github.com/sirshivansh',
+  linkedin: 'https://linkedin.com/in/your-username',
+  email: 'your.email@example.com',
+};
 ```
 
 ### 2. Add or Edit Projects
 
 ```typescript
-export const projectsData = [
+export const projects = [
   {
-    id: "project-slug",
-    title: "Project Name",
-    description: "Brief overview of what was built and key achievements.",
-    tech: ["Next.js", "TypeScript", "Tailwind CSS"],
-    github: "https://github.com/username/repo",
-    live: "https://project-demo.com",
-    category: "Full Stack",
-    featured: true,
+    title: 'Project Title',
+    type: 'Full-stack platform',
+    description: 'Overview of what was built and key engineering achievements.',
+    stack: ['Java', 'Spring Boot', 'MySQL'],
+    github: 'https://github.com/username/repo',
+    demo: 'https://demo-url.com',
   },
-]
+];
 ```
 
-### 3. Manage Skills & Technical Stack
+### 3. Categorized Technical Stack
 
 ```typescript
-export const skillsData = {
-  frontend: ["React", "Next.js", "TypeScript", "Tailwind CSS", "HTML5/CSS3"],
-  backend: ["Node.js", "Express", "REST APIs", "PostgreSQL", "MongoDB"],
-  tools: ["Git", "GitHub", "Vercel", "VS Code", "Postman"],
-}
+export const skills = {
+  'Languages': ['Java', 'Python', 'SQL', 'JavaScript', 'HTML', 'CSS'],
+  'Frameworks & Libraries': ['Spring Boot', 'REST APIs', 'JDBC'],
+  'Databases': ['MySQL', 'PostgreSQL'],
+  'Tools & Platforms': ['Git', 'GitHub', 'VS Code', 'IntelliJ IDEA', 'Linux'],
+};
 ```
+
+---
+
+## 🛠️ Tech Stack Matrix
+
+| Category | Technology | Version | Purpose |
+| --- | --- | --- | --- |
+| **Framework** | Next.js (App Router) | 16.3.3 | React framework for server rendering, static export & routing |
+| **UI Library** | React | 19.0.0 | Core UI component engine |
+| **Language** | TypeScript | 5.7.3 | Static typing, interface definitions & IDE autocomplete |
+| **Styling** | Tailwind CSS & Vanilla CSS | 4.3.3 | Utility-first styling & custom CSS custom properties |
+| **Typography** | Playfair Display, Inter, JetBrains Mono | Google Fonts | High-contrast serif headlines, sans-serif UI, and code typography |
+| **Graphics** | HTML5 2D Canvas | Native | High-performance 4K frame-sequence rendering |
+| **Image Processing** | Python Pillow | 12.2.0 | Lanczos super-resolution & UnsharpMask detail enhancement |
+| **Analytics** | @vercel/analytics | 1.6.1 | Privacy-focused visitor analytics |
 
 ---
 
@@ -143,7 +174,7 @@ export const skillsData = {
 
 ### Prerequisites
 
-Ensure you have the following installed on your machine:
+Ensure you have the following installed on your system:
 - **Node.js**: v18.17.0 or later (v20+ recommended)
 - **npm** (or **pnpm** / **yarn**)
 
@@ -166,7 +197,7 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the portfolio.
 
 ### 4. Build for Production
 
@@ -184,59 +215,43 @@ npm run start
 
 ## 🎨 Design System & Customization
 
-### Color Palette
+### Color Palette & Theme Tokens
 
-The portfolio features a dark aesthetic built on a charcoal black background `#0a0b10` with high-contrast accent tones:
+- **Page Background**: Pure White (`#ffffff`)
+- **Card Containers**: Light Immersive Glass (`rgba(255, 255, 255, 0.90)` / `backdrop-filter: blur(24px)`)
+- **Primary Text**: Deep Slate (`#0f172a` / `hsl(222, 47%, 11%)`)
+- **Secondary Text**: Muted Slate (`#475569` / `hsl(215, 16%, 47%)`)
+- **Accent Primary**: Cyan Blue (`#06b6d4` / `hsl(188, 94%, 43%)`)
+- **Accent Secondary**: Warm Amber (`#f59e0b` / `hsl(38, 92%, 50%)`)
 
-- **Background**: Dark Charcoal (`#0a0b10` / `rgba(10, 11, 16, 0.95)`)
-- **Primary Accent**: Cyan Blue (`#06b6d4` / `hsl(188, 94%, 43%)`)
-- **Secondary Accent**: Warm Amber (`#f59e0b` / `hsl(38, 92%, 50%)`)
-- **Card Surfaces**: Semi-transparent Glass (`rgba(255, 255, 255, 0.03)`) with `backdrop-filter: blur(12px)`
-- **Borders**: Subdued slate (`rgba(255, 255, 255, 0.08)`)
+### Adding Your Resume
 
-Custom CSS variables are configured in `app/globals.css`.
-
-### Adding your Resume
-
-Place your updated resume as `resume.pdf` in the `public/` folder:
+Place your updated resume as `resume.pdf` in the `public/` directory:
 ```
 public/resume.pdf
 ```
-The "Download Resume" buttons in the navigation bar and hero section will automatically point to this file.
-
-### Custom Profile Image
-
-Replace `public/shivansh-photo.jpg` with your own square or portrait image.
-
----
-
-## 🌌 3D WebGL Background
-
-The ambient 3D geometric scene in `components/portfolio-scene.tsx` is powered by Three.js and `@react-three/fiber`:
-
-- Rendered within a fixed background `div` with low GPU overhead (`pointer-events: none`).
-- Uses requestAnimationFrame loops for fluid rotation of icosahedron shapes and starfield particles.
-- Automatically adjusts resolution and frame rates for mobile devices to prevent battery drain.
+The "Resume" buttons in the navigation bar and hero section will automatically open/download this file.
 
 ---
 
 ## ⚡ Performance, SEO & Accessibility
 
-- **Lighthouse Scores**: Optimized for near-100 Performance, Accessibility, Best Practices, and SEO.
-- **Search Engine Optimization**: Custom Open Graph (`og:image`, `og:title`, `og:description`) tags and Twitter cards built into `app/layout.tsx`.
-- **Keyboard Navigation**: Interactive elements include visible focus outline rings (`outline-cyan-500`).
-- **Reduced Motion**: All scroll animations respect user OS setting `prefers-reduced-motion: reduce`.
+- **Lighthouse Benchmarks**: Optimized for 95+ Performance, Accessibility, Best Practices, and SEO.
+- **Hardware Acceleration**: Canvas rendering executes on the GPU using `requestAnimationFrame`.
+- **Search Engine Optimization**: Custom Open Graph (`og:image`, `og:title`, `og:description`) tags and Twitter cards in `app/layout.tsx`.
+- **Keyboard Navigation**: Interactive buttons and links include visible focus ring indicators.
+- **Reduced Motion**: Full support for `prefers-reduced-motion: reduce` with instant static fallback.
 
 ---
 
-## 🌐 Deployment
+## 🌐 Deployment Guide
 
 ### Deploying to Vercel (Recommended)
 
-1. Push your changes to GitHub.
-2. Go to [Vercel](https://vercel.com) and click **"Add New Project"**.
-3. Select your `personal-portfolio-shivansh` repository.
-4. Click **Deploy** (Vercel will auto-detect Next.js framework settings).
+1. Push your changes to your GitHub repository.
+2. Log in to [Vercel](https://vercel.com) and click **"Add New Project"**.
+3. Import your `personal-portfolio-shivansh` repository.
+4. Click **Deploy** (Vercel automatically detects Next.js build settings).
 
 ---
 
@@ -246,6 +261,6 @@ Distributed under the MIT License. See `LICENSE` for more details.
 
 ---
 
-<p center align="center">
+<p align="center">
   Crafted with ❤️ by <strong>Shivansh Mishra</strong>
 </p>
