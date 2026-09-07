@@ -39,7 +39,7 @@ export function FrameScrollCanvas({
       ctx.save();
       ctx.scale(dpr, dpr);
 
-      // Fill canvas background with pure white (#ffffff) to seamlessly blend with photo background
+      // Fill canvas background with pure white (#ffffff)
       ctx.fillStyle = '#ffffff';
       ctx.fillRect(0, 0, width, height);
 
@@ -49,25 +49,19 @@ export function FrameScrollCanvas({
         const canvasRatio = width / height;
         const imgRatio = imgW / imgH;
 
-        // Proportional CONTAIN scaling algorithm (prevents any zooming/cropping into the face)
-        // Max height constrained to 82% of viewport for optimal framing margin
-        const maxScaleHeight = height * 0.82;
-        const maxScaleWidth = width * 0.85;
-
+        // Full Screen COVER ratio algorithm — fills entire website area
         let renderW = width;
         let renderH = height;
+        let offsetX = 0;
+        let offsetY = 0;
 
         if (imgRatio > canvasRatio) {
-          renderW = Math.min(width, maxScaleWidth);
-          renderH = renderW / imgRatio;
+          renderW = height * imgRatio;
+          offsetX = (width - renderW) / 2;
         } else {
-          renderH = Math.min(height, maxScaleHeight);
-          renderW = renderH * imgRatio;
+          renderH = width / imgRatio;
+          offsetY = (height - renderH) / 2;
         }
-
-        // Center horizontally and vertically
-        const offsetX = (width - renderW) / 2;
-        const offsetY = (height - renderH) / 2 + 10; // Slight top padding shift
 
         ctx.drawImage(img, offsetX, offsetY, renderW, renderH);
       }

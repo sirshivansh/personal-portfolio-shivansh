@@ -1,7 +1,7 @@
 'use client';
 
 import { projectsData } from '@/lib/data';
-import { ExternalLink, Layers } from 'lucide-react';
+import { ExternalLink, Layers, ArrowUpRight } from 'lucide-react';
 import { GithubIcon } from '@/components/ui/icons';
 
 interface MilestoneProps {
@@ -22,79 +22,109 @@ export function ProjectsMilestone({ progress, isActive }: MilestoneProps) {
 
   if (!isActive && opacity <= 0.01) return null;
 
+  const project1 = projectsData[0];
+  const project2 = projectsData[1];
+  const project3 = projectsData[2];
+
   return (
     <div
-      className="fixed inset-0 flex flex-col items-center justify-center p-6 text-center pointer-events-none transition-opacity duration-300 z-10"
+      className="fixed inset-0 pointer-events-none transition-opacity duration-300 z-10"
       style={{ opacity }}
     >
-      <div className="max-w-5xl w-full bg-slate-950/85 backdrop-blur-2xl border border-slate-800/90 rounded-3xl p-8 sm:p-10 shadow-2xl pointer-events-auto space-y-6">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900 border border-amber-500/30 text-amber-300 text-xs font-mono tracking-wider uppercase">
+      {/* LEFT SIDE: Header & Projects 1 & 2 */}
+      <div className="absolute left-6 lg:left-16 top-1/2 -translate-y-1/2 max-w-md lg:max-w-lg w-full pointer-events-auto space-y-4 text-left">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-950/85 backdrop-blur-md border border-amber-500/40 text-amber-300 text-xs font-mono tracking-wider uppercase shadow-xl">
           <Layers className="w-3.5 h-3.5" />
           <span>Featured Work</span>
         </div>
 
-        <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
-          Selected Projects & Case Studies
+        <h2 className="text-3xl sm:text-4xl font-bold text-slate-950 tracking-tight drop-shadow-sm">
+          Selected Projects
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 pt-1 text-left">
-          {projectsData.map((project) => (
-            <div
-              key={project.id}
-              className="bg-slate-900/90 p-5 rounded-2xl border border-slate-800 hover:border-cyan-500/50 transition-all duration-300 hover:-translate-y-1 group flex flex-col justify-between"
-            >
-              <div className="space-y-2.5">
-                <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
-                    {project.category}
-                  </span>
-                  <div className="flex items-center gap-2">
-                    {project.githubUrl && (
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-1 rounded-full hover:bg-slate-800 text-slate-300 hover:text-white transition-colors"
-                        title="View Code"
-                      >
-                        <GithubIcon className="w-4 h-4" />
-                      </a>
-                    )}
-                    {project.liveUrl && (
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-1 rounded-full hover:bg-slate-800 text-slate-300 hover:text-cyan-300 transition-colors"
-                        title="Live Demo"
-                      >
-                        <ExternalLink className="w-4 h-4" />
-                      </a>
-                    )}
-                  </div>
-                </div>
-
-                <h3 className="text-lg font-bold text-white group-hover:text-cyan-300 transition-colors">
-                  {project.title}
-                </h3>
-
-                <p className="text-slate-300 text-xs leading-relaxed line-clamp-3">
-                  {project.description}
-                </p>
-              </div>
-
-              <div className="pt-3 flex flex-wrap gap-1.5">
-                {project.tech.map((t, i) => (
-                  <span
-                    key={i}
-                    className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-950 text-slate-200 border border-slate-800"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
+        {project1 && (
+          <div className="bg-slate-950/85 backdrop-blur-xl p-5 rounded-2xl border border-slate-800 space-y-2 shadow-2xl hover:border-cyan-500/50 transition-colors">
+            <div className="flex items-center justify-between">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
+                {project1.category}
+              </span>
+              {project1.githubUrl && (
+                <a
+                  href={project1.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-slate-300 hover:text-white p-1"
+                >
+                  <GithubIcon className="w-4 h-4" />
+                </a>
+              )}
             </div>
-          ))}
+            <h3 className="text-base font-bold text-white">{project1.title}</h3>
+            <p className="text-slate-300 text-xs leading-relaxed">{project1.description}</p>
+            <div className="flex flex-wrap gap-1 pt-1">
+              {project1.tech.map((t, i) => (
+                <span key={i} className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-900 text-slate-300 border border-slate-800">
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {project2 && (
+          <div className="bg-slate-950/85 backdrop-blur-xl p-5 rounded-2xl border border-slate-800 space-y-2 shadow-2xl hover:border-cyan-500/50 transition-colors">
+            <div className="flex items-center justify-between">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
+                {project2.category}
+              </span>
+            </div>
+            <h3 className="text-base font-bold text-white">{project2.title}</h3>
+            <p className="text-slate-300 text-xs leading-relaxed">{project2.description}</p>
+            <div className="flex flex-wrap gap-1 pt-1">
+              {project2.tech.map((t, i) => (
+                <span key={i} className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-900 text-slate-300 border border-slate-800">
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* RIGHT SIDE: Project 3 & GitHub Link */}
+      <div className="absolute right-6 lg:right-16 top-1/2 -translate-y-1/2 max-w-md lg:max-w-md w-full pointer-events-auto space-y-4 text-left hidden md:block">
+        {project3 && (
+          <div className="bg-slate-950/85 backdrop-blur-xl p-5 rounded-2xl border border-slate-800 space-y-2 shadow-2xl hover:border-cyan-500/50 transition-colors">
+            <div className="flex items-center justify-between">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
+                {project3.category}
+              </span>
+            </div>
+            <h3 className="text-base font-bold text-white">{project3.title}</h3>
+            <p className="text-slate-300 text-xs leading-relaxed">{project3.description}</p>
+            <div className="flex flex-wrap gap-1 pt-1">
+              {project3.tech.map((t, i) => (
+                <span key={i} className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-900 text-slate-300 border border-slate-800">
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <div className="bg-slate-950/85 backdrop-blur-xl p-5 rounded-2xl border border-slate-800 space-y-3 shadow-2xl">
+          <h4 className="text-xs font-mono text-cyan-300 uppercase tracking-wider">Explore All Repositories</h4>
+          <p className="text-xs text-slate-300 leading-relaxed">
+            Check out open-source projects, Java algorithms, and utility scripts on my GitHub profile.
+          </p>
+          <a
+            href="https://github.com/sirshivansh"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-xs font-mono text-cyan-300 hover:text-white transition-colors"
+          >
+            Visit GitHub Profile <ArrowUpRight className="w-3.5 h-3.5" />
+          </a>
         </div>
       </div>
     </div>

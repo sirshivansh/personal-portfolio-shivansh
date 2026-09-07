@@ -23,46 +23,48 @@ export function AboutMilestone({ progress, isActive }: MilestoneProps) {
 
   return (
     <div
-      className="fixed inset-0 flex flex-col items-center justify-center p-6 text-center pointer-events-none transition-opacity duration-300 z-10"
+      className="fixed inset-0 pointer-events-none transition-opacity duration-300 z-10"
       style={{ opacity }}
     >
-      <div className="max-w-4xl w-full bg-slate-950/85 backdrop-blur-2xl border border-slate-800/90 rounded-3xl p-8 sm:p-10 shadow-2xl pointer-events-auto space-y-6">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900 border border-teal-500/30 text-teal-300 text-xs font-mono tracking-wider uppercase">
+      {/* LEFT SIDE: Backstory */}
+      <div className="absolute left-6 lg:left-16 top-1/2 -translate-y-1/2 max-w-md lg:max-w-lg w-full pointer-events-auto space-y-4 text-left">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-950/85 backdrop-blur-md border border-teal-500/40 text-teal-300 text-xs font-mono tracking-wider uppercase shadow-xl">
           <User className="w-3.5 h-3.5" />
           <span>About Shivansh</span>
         </div>
 
-        <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
-          Crafting Digital Experiences with Precision
+        <h2 className="text-3xl sm:text-4xl font-bold text-slate-950 tracking-tight drop-shadow-sm">
+          Crafting Digital Experiences
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2 text-left">
-          <div className="bg-slate-900/90 p-6 rounded-2xl border border-slate-800 space-y-3">
-            <h3 className="text-lg font-semibold text-cyan-300 flex items-center gap-2">
-              <Code2 className="w-5 h-5" /> Backstory & Engineering
-            </h3>
-            <p className="text-slate-300 text-xs leading-relaxed">
-              {aboutInfo.paragraph1}
-            </p>
-            <p className="text-slate-300 text-xs leading-relaxed">
-              {aboutInfo.paragraph2}
-            </p>
-          </div>
+        <div className="bg-slate-950/85 backdrop-blur-xl p-6 rounded-2xl border border-slate-800 space-y-3 shadow-2xl">
+          <h3 className="text-sm font-semibold text-cyan-300 flex items-center gap-2 font-mono">
+            <Code2 className="w-4 h-4" /> Backstory & Engineering
+          </h3>
+          <p className="text-slate-300 text-xs leading-relaxed">
+            {aboutInfo.paragraph1}
+          </p>
+          <p className="text-slate-300 text-xs leading-relaxed">
+            {aboutInfo.paragraph2}
+          </p>
+        </div>
+      </div>
 
-          <div className="bg-slate-900/90 p-6 rounded-2xl border border-slate-800 space-y-3">
-            <h3 className="text-lg font-semibold text-amber-400 flex items-center gap-2">
-              <Cpu className="w-5 h-5" /> Core Philosophy
-            </h3>
-            <div className="space-y-2.5">
-              {aboutInfo.highlights.map((item, idx) => (
-                <div key={idx} className="flex items-start gap-2.5">
-                  <div className="p-1 rounded-md bg-cyan-500/10 text-cyan-400 mt-0.5">
-                    <Rocket className="w-3.5 h-3.5" />
-                  </div>
-                  <p className="text-slate-200 text-xs font-medium">{item}</p>
+      {/* RIGHT SIDE: Core Philosophy */}
+      <div className="absolute right-6 lg:right-16 top-1/2 -translate-y-1/2 max-w-md lg:max-w-md w-full pointer-events-auto space-y-4 text-left hidden md:block">
+        <div className="bg-slate-950/85 backdrop-blur-xl p-6 rounded-2xl border border-slate-800 space-y-4 shadow-2xl">
+          <h3 className="text-sm font-semibold text-amber-400 flex items-center gap-2 font-mono">
+            <Cpu className="w-4 h-4" /> Core Philosophy
+          </h3>
+          <div className="space-y-3">
+            {aboutInfo.highlights.map((item, idx) => (
+              <div key={idx} className="flex items-start gap-2.5">
+                <div className="p-1 rounded bg-cyan-500/10 text-cyan-300 mt-0.5">
+                  <Rocket className="w-3.5 h-3.5" />
                 </div>
-              ))}
-            </div>
+                <p className="text-slate-200 text-xs font-medium">{item}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
