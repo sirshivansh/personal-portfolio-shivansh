@@ -26,18 +26,18 @@ export function SkillsMilestone({ progress, isActive }: MilestoneProps) {
       className="fixed inset-0 pt-20 pb-12 flex items-center justify-between px-6 lg:px-14 pointer-events-none transition-opacity duration-300 z-10"
       style={{ opacity }}
     >
-      {/* LEFT SIDE: Skills Container */}
-      <div className="pointer-events-auto max-w-sm sm:max-w-md lg:max-w-md w-full bg-white/40 backdrop-blur-md border border-white/60 shadow-xl p-6 sm:p-7 rounded-3xl space-y-3.5 text-left">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/70 border border-cyan-200 text-cyan-800 font-sans font-semibold text-[0.75rem] tracking-[0.1em] uppercase shadow-sm">
+      {/* LEFT SIDE CONTAINER */}
+      <div className="pointer-events-auto max-w-sm sm:max-w-md lg:max-w-md w-full bg-white/95 backdrop-blur-xl border border-slate-200/90 shadow-xl shadow-slate-900/5 p-7 sm:p-8 rounded-3xl space-y-4 text-left">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-50 border border-cyan-200 text-cyan-800 font-sans font-semibold text-[0.75rem] tracking-[0.1em] uppercase shadow-sm">
           <Cpu className="w-3.5 h-3.5 text-cyan-600" />
           <span>Technical Stack</span>
         </div>
 
-        <h2 className="font-serif font-bold text-slate-900 text-3xl sm:text-4xl tracking-[-0.02em] leading-tight">
+        <h2 className="font-serif font-bold text-slate-900 text-3xl sm:text-4xl leading-snug tracking-normal">
           Skills & Toolkit
         </h2>
 
-        <div className="space-y-2.5 pt-1 border-t border-slate-200/60">
+        <div className="space-y-3 pt-2 border-t border-slate-200/80">
           <div className="flex items-center gap-2">
             <Terminal className="w-4 h-4 text-cyan-700" />
             <h3 className="text-xs font-semibold text-slate-900 font-mono">Languages</h3>
@@ -46,7 +46,7 @@ export function SkillsMilestone({ progress, isActive }: MilestoneProps) {
             {skillsData.languages.map((skill, sIdx) => (
               <span
                 key={sIdx}
-                className="text-[11px] font-mono px-2 py-0.5 rounded bg-white/80 text-slate-800 border border-slate-200 font-medium"
+                className="text-[11px] font-mono px-2.5 py-1 rounded bg-slate-100 text-slate-800 border border-slate-200 font-medium"
               >
                 {skill}
               </span>
@@ -54,7 +54,7 @@ export function SkillsMilestone({ progress, isActive }: MilestoneProps) {
           </div>
         </div>
 
-        <div className="space-y-2.5 pt-1">
+        <div className="space-y-3 pt-1">
           <div className="flex items-center gap-2">
             <Globe className="w-4 h-4 text-teal-700" />
             <h3 className="text-xs font-semibold text-slate-900 font-mono">Frameworks & APIs</h3>
@@ -63,7 +63,7 @@ export function SkillsMilestone({ progress, isActive }: MilestoneProps) {
             {skillsData.frameworks.map((skill, sIdx) => (
               <span
                 key={sIdx}
-                className="text-[11px] font-mono px-2 py-0.5 rounded bg-white/80 text-slate-800 border border-slate-200 font-medium"
+                className="text-[11px] font-mono px-2.5 py-1 rounded bg-slate-100 text-slate-800 border border-slate-200 font-medium"
               >
                 {skill}
               </span>
@@ -72,9 +72,9 @@ export function SkillsMilestone({ progress, isActive }: MilestoneProps) {
         </div>
       </div>
 
-      {/* RIGHT SIDE: Databases & Tools */}
-      <div className="pointer-events-auto max-w-xs sm:max-w-sm w-full bg-white/40 backdrop-blur-md border border-white/60 shadow-xl p-5 sm:p-6 rounded-3xl space-y-3.5 text-left hidden md:block">
-        <div className="space-y-2.5">
+      {/* RIGHT SIDE CONTAINER */}
+      <div className="pointer-events-auto max-w-xs sm:max-w-sm w-full bg-white/95 backdrop-blur-xl border border-slate-200/90 shadow-xl shadow-slate-900/5 p-6 sm:p-7 rounded-3xl space-y-4 text-left hidden md:block">
+        <div className="space-y-3">
           <div className="flex items-center gap-2">
             <Database className="w-4 h-4 text-amber-600" />
             <h3 className="text-xs font-semibold text-slate-900 font-mono">Databases</h3>
@@ -83,7 +83,7 @@ export function SkillsMilestone({ progress, isActive }: MilestoneProps) {
             {skillsData.databases.map((skill, sIdx) => (
               <span
                 key={sIdx}
-                className="text-[11px] font-mono px-2 py-0.5 rounded bg-white/80 text-slate-800 border border-slate-200 font-medium"
+                className="text-[11px] font-mono px-2.5 py-1 rounded bg-slate-100 text-slate-800 border border-slate-200 font-medium"
               >
                 {skill}
               </span>
@@ -91,7 +91,7 @@ export function SkillsMilestone({ progress, isActive }: MilestoneProps) {
           </div>
         </div>
 
-        <div className="space-y-2.5 pt-2 border-t border-slate-200/60">
+        <div className="space-y-3 pt-2 border-t border-slate-200/80">
           <div className="flex items-center gap-2">
             <Wrench className="w-4 h-4 text-indigo-700" />
             <h3 className="text-xs font-semibold text-slate-900 font-mono">Tools & Platforms</h3>
@@ -100,7 +100,7 @@ export function SkillsMilestone({ progress, isActive }: MilestoneProps) {
             {skillsData.tools.map((skill, sIdx) => (
               <span
                 key={sIdx}
-                className="text-[11px] font-mono px-2 py-0.5 rounded bg-white/80 text-slate-800 border border-slate-200 font-medium"
+                className="text-[11px] font-mono px-2.5 py-1 rounded bg-slate-100 text-slate-800 border border-slate-200 font-medium"
               >
                 {skill}
               </span>
