@@ -11,6 +11,7 @@
   --color-muted-foreground: var(--muted-foreground);
   --font-sans: var(--font-inter);
   --font-mono: var(--font-jetbrains);
+  --font-serif: var(--font-playfair);
 }
 
 :root { --background: #ffffff; --foreground: #020617; --card: #020617; --card-foreground: #f8fafc; --border: rgba(15, 23, 42, .12); --muted-foreground: #64748b; --cyan: #06b6d4; --amber: #f59e0b; --ink: #ffffff; }
@@ -20,8 +21,11 @@ body { margin: 0; background: #ffffff; color: var(--foreground); font-family: va
 a { color: inherit; text-decoration: none; }
 button { font: inherit; }
 
+.font-serif { font-family: var(--font-playfair), 'Playfair Display', Georgia, serif; }
+
 /* ─── Shell & Background ─────────────────────────────── */
 .portfolio-shell { position: relative; min-height: 100vh; overflow: hidden; background: #ffffff; }
+.glass-panel-light { background: rgba(255, 255, 255, 0.88); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(226, 232, 240, 0.9); border-radius: 1.5rem; box-shadow: 0 20px 30px -10px rgba(15, 23, 42, 0.06); color: #0f172a; }
 .glass-panel { background: rgba(2, 6, 23, 0.88); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 1.5rem; color: #f8fafc; }
 .scene-shell { position: fixed; inset: 0; z-index: 0; opacity: .72; pointer-events: auto; }
 .scene-shell canvas { width: 100% !important; height: 100% !important; }

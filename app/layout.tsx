@@ -1,13 +1,18 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import { Inter, JetBrains_Mono } from 'next/font/google'
+import { Inter, JetBrains_Mono, Playfair_Display } from 'next/font/google'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const jetbrains = JetBrains_Mono({ subsets: ['latin'], variable: '--font-jetbrains' })
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  weight: ['700'],
+  variable: '--font-playfair',
+})
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://shivansh-mishra.vercel.app'), // TODO: replace with your real deployed URL
+  metadataBase: new URL('https://shivansh-mishra.vercel.app'),
   title: 'Shivansh Mishra — Java Developer & Computer Engineering Student',
   description:
     'Portfolio of Shivansh Mishra, a Java developer and computer engineering student specializing in backend development, Spring Boot, and building dependable software.',
@@ -55,14 +60,14 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  colorScheme: 'dark',
-  themeColor: '#071014',
+  colorScheme: 'light dark',
+  themeColor: '#ffffff',
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="bg-background">
-      <body className={`${inter.variable} ${jetbrains.variable} antialiased`}>
+    <html lang="en" className="bg-white">
+      <body className={`${inter.variable} ${jetbrains.variable} ${playfair.variable} antialiased`}>
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
