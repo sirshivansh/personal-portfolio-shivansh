@@ -1,4 +1,4 @@
-export const TOTAL_FRAMES = 120;
+export const TOTAL_FRAMES = 152;
 export const FRAME_PATH = '/frames/';
 export const FRAME_PREFIX = 'ezgif-frame-';
 export const FRAME_EXT = '.jpg';
