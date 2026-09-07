@@ -13,16 +13,16 @@
   --font-mono: var(--font-jetbrains);
 }
 
-:root { --background: #071014; --foreground: #e7f1ef; --card: #0d1c21; --card-foreground: #e7f1ef; --border: rgba(165, 198, 193, .18); --muted-foreground: #94aaa7; --cyan: #5eead4; --amber: #f59e0b; --ink: #071014; }
+:root { --background: #ffffff; --foreground: #020617; --card: #020617; --card-foreground: #f8fafc; --border: rgba(15, 23, 42, .12); --muted-foreground: #64748b; --cyan: #06b6d4; --amber: #f59e0b; --ink: #ffffff; }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; background: var(--background); }
-body { margin: 0; background: var(--background); color: var(--foreground); font-family: var(--font-inter), sans-serif; }
+html { scroll-behavior: smooth; background: #ffffff; }
+body { margin: 0; background: #ffffff; color: var(--foreground); font-family: var(--font-inter), sans-serif; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; }
 
 /* ─── Shell & Background ─────────────────────────────── */
-.portfolio-shell { position: relative; min-height: 100vh; overflow: hidden; background: radial-gradient(circle at 78% 15%, rgba(20, 78, 86, .22), transparent 30%), #071014; }
-.glass-panel { background: rgba(13, 28, 33, 0.65); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 1.25rem; }
+.portfolio-shell { position: relative; min-height: 100vh; overflow: hidden; background: #ffffff; }
+.glass-panel { background: rgba(2, 6, 23, 0.88); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 1.5rem; color: #f8fafc; }
 .scene-shell { position: fixed; inset: 0; z-index: 0; opacity: .72; pointer-events: auto; }
 .scene-shell canvas { width: 100% !important; height: 100% !important; }
 .noise-layer { position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: .08; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E"); }

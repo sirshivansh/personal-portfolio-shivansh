@@ -39,20 +39,20 @@ export default function Home() {
   }
 
   return (
-    <div className="relative w-full min-h-screen bg-black text-white selection:bg-cyan-500 selection:text-black">
-      {/* 1. Header Navigation */}
+    <div className="relative w-full min-h-screen bg-white text-slate-900 selection:bg-cyan-500 selection:text-slate-950">
+      {/* 1. Floating Dark Header Navigation */}
       <FrameNavbar currentFrame={lerpState.currentFrame} />
 
       {/* 2. Scroll Track — Sets scrollbar travel length (500vh) */}
       <div className="relative z-0 h-[500vh] w-full" aria-hidden="true" />
 
-      {/* 3. Canvas Layer — Fixed WebGL / 2D Canvas background rendering frames */}
+      {/* 3. Canvas Layer — Proportional CONTAIN canvas background blending into white page */}
       <FrameScrollCanvas
         currentFrame={lerpState.currentFrame}
         images={images}
       />
 
-      {/* 4. Overlay Content Layer — Milestone cards */}
+      {/* 4. Overlay Content Layer — Dark Glass Milestone cards for 100% text readability */}
       <div className="fixed inset-0 z-20 pointer-events-none">
         <FrameOverlayContent currentFrame={lerpState.currentFrame} />
       </div>

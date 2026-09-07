@@ -14,7 +14,6 @@ export function FrameScrollCanvas({
   className = '',
 }: FrameScrollCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const lastDrawnFrameRef = useRef<number | null>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -27,11 +26,7 @@ export function FrameScrollCanvas({
 
     const render = () => {
       const img = images.get(currentFrame);
-      if (!img || !img.complete || img.naturalWidth === 0) {
-        return;
-      }
 
-      // Check canvas dimensions vs window
       const width = window.innerWidth;
       const height = window.innerHeight;
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -43,31 +38,41 @@ export function FrameScrollCanvas({
 
       ctx.save();
       ctx.scale(dpr, dpr);
-      ctx.clearRect(0, 0, width, height);
 
-      // Cover ratio math
-      const imgW = img.naturalWidth;
-      const imgH = img.naturalHeight;
-      const canvasRatio = width / height;
-      const imgRatio = imgW / imgH;
+      // Fill canvas background with pure white (#ffffff) to seamlessly blend with photo background
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, width, height);
 
-      let renderW = width;
-      let renderH = height;
-      let offsetX = 0;
-      let offsetY = 0;
+      if (img && img.complete && img.naturalWidth > 0) {
+        const imgW = img.naturalWidth;
+        const imgH = img.naturalHeight;
+        const canvasRatio = width / height;
+        const imgRatio = imgW / imgH;
 
-      if (imgRatio > canvasRatio) {
-        renderW = height * imgRatio;
-        offsetX = (width - renderW) / 2;
-      } else {
-        renderH = width / imgRatio;
-        offsetY = (height - renderH) / 2;
+        // Proportional CONTAIN scaling algorithm (prevents any zooming/cropping into the face)
+        // Max height constrained to 82% of viewport for optimal framing margin
+        const maxScaleHeight = height * 0.82;
+        const maxScaleWidth = width * 0.85;
+
+        let renderW = width;
+        let renderH = height;
+
+        if (imgRatio > canvasRatio) {
+          renderW = Math.min(width, maxScaleWidth);
+          renderH = renderW / imgRatio;
+        } else {
+          renderH = Math.min(height, maxScaleHeight);
+          renderW = renderH * imgRatio;
+        }
+
+        // Center horizontally and vertically
+        const offsetX = (width - renderW) / 2;
+        const offsetY = (height - renderH) / 2 + 10; // Slight top padding shift
+
+        ctx.drawImage(img, offsetX, offsetY, renderW, renderH);
       }
 
-      ctx.drawImage(img, offsetX, offsetY, renderW, renderH);
       ctx.restore();
-
-      lastDrawnFrameRef.current = currentFrame;
     };
 
     animationFrameId = requestAnimationFrame(render);
@@ -87,7 +92,7 @@ export function FrameScrollCanvas({
   return (
     <canvas
       ref={canvasRef}
-      className={`fixed inset-0 w-full h-full object-cover pointer-events-none z-0 ${className}`}
+      className={`fixed inset-0 w-full h-full pointer-events-none z-0 ${className}`}
       aria-hidden="true"
     />
   );
